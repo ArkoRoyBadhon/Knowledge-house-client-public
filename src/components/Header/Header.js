@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 
 const Header = () => {
     return (
-        <div className="navbar bg-base-100 sticky top-0 z-50">
+        <div className="navbar bg-base-100 sticky top-0 z-50 bg-gray-200">
             <div className="navbar-start">
                 <div className="dropdown">
                     <label tabIndex={0} className="btn btn-ghost lg:hidden">
@@ -14,7 +14,7 @@ const Header = () => {
                         <li><Link to='/course-category'>Course</Link></li>
                     </ul>
                 </div>
-                <Link className="btn btn-ghost normal-case text-xl">daisyUI</Link>
+                <Link className="btn btn-ghost normal-case text-xl">Knowledge<span className='text-red-600'>House</span></Link>
             </div>
             <div className="navbar-center hidden lg:flex">
                 <ul className="menu menu-horizontal p-0">
@@ -29,7 +29,9 @@ const Header = () => {
                 </ul>
             </div>
             <div className="navbar-end">
-                <Link className="btn">Get started</Link>
+                <Link to='/login' className="btn btn-outline btn-info mr-2">Login</Link>
+                <Link to='/register' className="btn btn-outline btn-secondary">Register</Link>
+                
             </div>
         </div>
     );
