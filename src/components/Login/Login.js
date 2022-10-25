@@ -1,14 +1,17 @@
 import React from 'react';
 
 import { useContext } from 'react';
-import { Navigate, useNavigate } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../Context/AuthProvider';
 
 const Login = () => {
-    
-    const {logIn, setUser,setLoading} = useContext(AuthContext);
+
+    const { logIn, setLoading } = useContext(AuthContext);
 
     const navigate = useNavigate();
+    const location = useLocation();
+
+    const from = location.state?.from?.pathname || '/';
 
     const handleSubmit = (event) => {
         event.preventDefault();
@@ -16,16 +19,20 @@ const Login = () => {
         const email = form.email.value;
         const password = form.password.value;
         logIn(email, password)
-        .then(result => {
-            const user = result.user;
-            console.log('login success');
-            form.reset();
-            navigate('/');
-        })
-        .catch(error => console.error(error))
-        .finally(()=>{
-            setLoading(false);
-        })
+            .then(result => {
+                const user = result.user;
+                console.log('login success');
+                form.reset();
+                if (user.emailVerified) {
+                    navigate(from, { replace: true })
+                } else {
+                    alert('not verified');
+                }
+            })
+            .catch(error => console.error(error))
+            .finally(() => {
+                setLoading(false);
+            })
     }
     return (
         <div className="w-2/5 mx-auto rounded-md shadow-xl mt-8 py-8">
@@ -42,12 +49,6 @@ const Login = () => {
                         <span className="label-text">Enter Your Password</span>
                     </label>
                     <input name='password' type="password" placeholder="Type here" className="input input-bordered w-full max-w-xs" />
-                </div>
-                <div className="form-control max-w-xs w-full mx-auto">
-                    <label className="cursor-pointer label">
-                        <span className="label-text">Remember me</span>
-                        <input type="checkbox" checked className="checkbox checkbox-accent" />
-                    </label>
                 </div>
                 <input type="submit" value='Login' className='btn btn-outline btn-info w-2/5 mt-4 mb-8' />
             </form>

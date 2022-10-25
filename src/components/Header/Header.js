@@ -4,10 +4,11 @@ import { Link } from 'react-router-dom';
 import { AuthContext } from '../../Context/AuthProvider';
 
 const Header = () => {
-    const { logOut, user } = useContext(AuthContext);
+    const { logOut, user, setUser } = useContext(AuthContext);
 
     const userLogout = () => {
         logOut();
+        setUser('')
     }
 
     return (
@@ -37,10 +38,14 @@ const Header = () => {
                 </ul>
             </div>
             <div className="navbar-end">
-                <p>{user?.email}</p>
+
                 {
                     user?.uid ?
-                        <Link to='/login' className="btn btn-outline btn-info mr-2" onClick={userLogout}>Logout</Link>
+                        <>
+                            <p>{user?.displayName}</p>
+                            <img className="w-16 rounded-full mx-2" src={user?.photoURL} alt="" />
+                            <Link to='/login' className="btn btn-outline btn-info mr-2" onClick={userLogout}>Logout</Link>
+                        </>
                         :
                         <>
                             <Link to='/login' className="btn btn-outline btn-info mr-2">Login</Link>

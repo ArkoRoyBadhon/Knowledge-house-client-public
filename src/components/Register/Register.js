@@ -1,9 +1,15 @@
 import React from 'react';
-import { useContext } from 'react';
+import { useContext,useState } from 'react';
 import { AuthContext } from '../../Context/AuthProvider';
+import {useNavigate} from 'react-router-dom';
 
 const Register = () => {
-    const {createUser} = useContext(AuthContext);
+    const [checked, setChecked] = useState(false);
+    const {createUser, updateUserProfile, verifyEmail} = useContext(AuthContext);
+
+    const navigate = useNavigate();
+
+
     const handleSubmit = (event) => {
         event.preventDefault();
         const form = event.target;
@@ -15,9 +21,34 @@ const Register = () => {
         .then(result => {
             const user = result.user;
             console.log(user);
+            form.reset();
+            handleUpdateUserProfile(name,photoURL);
+            verifyEmail();
+            navigate('/login');
         })
         .catch(error => console.error(error))
     }
+
+
+    const handleUpdateUserProfile = (name, photoURL) => {
+        const profile = {
+            displayName: name,
+            photoURL: photoURL
+        }
+        updateUserProfile(profile)
+        .then(()=>{})
+        .catch(error => console.error(error))
+    }
+
+    const handleChecked = () => {
+        if(checked) {
+            setChecked(false);
+
+        } else {
+            setChecked(true)
+        }
+    }
+
 
 
     return (
@@ -51,10 +82,10 @@ const Register = () => {
                 <div className="form-control max-w-xs w-full mx-auto">
                     <label className="cursor-pointer label">
                         <span className="label-text text-stone-400">Continue With our Terms and Condition</span>
-                        <input type="checkbox" checked={false} className="checkbox checkbox-accent" />
+                        <input onClick={handleChecked} type="checkbox"  className="checkbox checkbox-accent" />
                     </label>
                 </div>
-                <input type="submit" className='btn btn-outline btn-info w-2/5 mt-4' value='Register' />
+                <input type="submit" className={`btn btn-outline btn-info w-2/5 mt-4 ${!checked && 'btn-disabled'}`} value='Register' />
             </form>
         </div>
     );

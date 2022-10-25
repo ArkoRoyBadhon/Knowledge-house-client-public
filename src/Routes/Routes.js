@@ -1,10 +1,12 @@
 import { createBrowserRouter } from "react-router-dom";
 import CourseCard from "../components/CourseCard/CourseCard";
+import CourseDetail from "../components/CourseDetail/CourseDetail";
 import CoursePage from "../components/CoursePage/CoursePage";
 import Home from "../components/Home/Home";
 import Login from "../components/Login/Login";
 import Register from "../components/Register/Register";
 import Main from "../Layouts/Main";
+import PrivateRoute from "../PrivateRoute/PrivateRoute";
 
 const routes = createBrowserRouter([
     {
@@ -17,20 +19,9 @@ const routes = createBrowserRouter([
             },
             {
                 path: '/course-category/',
-                element: <CoursePage></CoursePage>,
-                loader: ({params})=> fetch(`http://localhost:5000/course-category/${params.id}`),
-                children: [
-                    {
-                        path: '/course-category/',
-                        element: <CourseCard></CourseCard>,
-                        loader: ({params})=> fetch(`http://localhost:5000/course-category/07`)
-                    },
-                    {
-                        path: '/course-category/:id',
-                        element: <CourseCard></CourseCard>,
-                        loader: ({params})=> fetch(`http://localhost:5000/course-category/${params.id}`)
-                    }
-                ]
+                element: <PrivateRoute><CoursePage></CoursePage></PrivateRoute>,
+                loader: ({ params }) => fetch(`http://localhost:5000/course-category/${params.id}`),
+                
             },
             {
                 path: '/login',
@@ -39,6 +30,11 @@ const routes = createBrowserRouter([
             {
                 path: '/register',
                 element: <Register></Register>
+            },
+            {
+                path: '/course-details/:id',
+                element: <CourseDetail></CourseDetail>,
+                loader: ({params}) => fetch(`http://localhost:5000/course-detail/${params.id}`)
             }
         ]
     }
