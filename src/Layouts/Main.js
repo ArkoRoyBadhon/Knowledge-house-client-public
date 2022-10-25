@@ -1,9 +1,14 @@
 import React from 'react';
+import { Outlet } from 'react-router-dom';
+import Category from '../components/Category/Category';
+import Header from '../components/Header/Header';
 
 const Main = () => {
     return (
         <div>
-            <h2>Main</h2>
+            <Header></Header>
+            <Outlet></Outlet>
+            
         </div>
     );
 };
