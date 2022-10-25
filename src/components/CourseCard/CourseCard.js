@@ -16,10 +16,9 @@ const CourseCard = () => {
                                 {c.title}
                                 <div className="badge badge-secondary">NEW</div>
                             </h2>
-                            <p>If a dog chews shoes whose shoes does he choose?</p>
-                            <div className="card-actions justify-end">
-                                <div className="badge badge-outline">Fashion</div>
-                                <div className="badge badge-outline">Products</div>
+                            <p>{c.details}</p>
+                            <div className="card-actions justify-center mt-3">
+                                <button className='btn btn-outline btn-info'>See More</button>
                             </div>
                         </div>
                     </div>

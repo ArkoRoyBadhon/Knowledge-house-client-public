@@ -1,10 +1,29 @@
 import React from 'react';
+import { useContext } from 'react';
+import { AuthContext } from '../../Context/AuthProvider';
 
 const Register = () => {
+    const {createUser} = useContext(AuthContext);
+    const handleSubmit = (event) => {
+        event.preventDefault();
+        const form = event.target;
+        const name = form.name.value;
+        const photoURL = form.photoURL.value;
+        const email = form.email.value;
+        const password = form.password.value;
+        createUser(email, password)
+        .then(result => {
+            const user = result.user;
+            console.log(user);
+        })
+        .catch(error => console.error(error))
+    }
+
+
     return (
         <div className="w-2/5 mx-auto rounded-md shadow-xl mt-8 py-8 ">
             <h4 className='text-xl font-bold'>Registration Form</h4>
-            <form className='mt-5'>
+            <form className='mt-5' onSubmit={handleSubmit}>
                 <div className="form-control w-full max-w-xs mx-auto">
                     <label className="label">
                         <span className="label-text">Enter Your Name</span>
@@ -27,7 +46,7 @@ const Register = () => {
                     <label className="label">
                         <span className="label-text">Enter Your Password</span>
                     </label>
-                    <input name='passowrd' type="text" placeholder="Type here" className="input input-bordered w-full max-w-xs input-primary" />
+                    <input name='password' type="password" placeholder="Type here" className="input input-bordered w-full max-w-xs input-primary" />
                 </div>
                 <div className="form-control max-w-xs w-full mx-auto">
                     <label className="cursor-pointer label">
