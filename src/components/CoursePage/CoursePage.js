@@ -1,5 +1,5 @@
 import React from 'react';
-import { useLoaderData } from 'react-router-dom';
+import { Outlet, useLoaderData } from 'react-router-dom';
 import Category from '../Category/Category';
 import CourseCard from '../CourseCard/CourseCard';
 
@@ -12,11 +12,11 @@ const CoursePage = () => {
                     <Category></Category>
                 </div>
                 <div className='col-span-8 grid grid-cols-2 gap-5'>
-                    {
+                    {/* {
                         courses.map(course => 
                             <CourseCard className=''></CourseCard>)
-                    }
-                    
+                    } */}
+                    <Outlet></Outlet>
                 </div>
             </div>
         </div>
