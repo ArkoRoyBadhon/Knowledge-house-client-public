@@ -1,5 +1,5 @@
 import React, { useRef } from 'react';
-import { useLoaderData } from 'react-router-dom';
+import { Link, useLoaderData } from 'react-router-dom';
 // import { useReactToPrint } from 'react-to-print';
 // import Pdf from "react-to-pdf";
 
@@ -42,7 +42,7 @@ const CourseDetail = () => {
                             </div>
                             <p className="">Total Student: {course.total_student}</p>
                             <div className="card-actions justify-center mt-4">
-                                <button className="btn btn-primary">Checkout</button>
+                                <Link to='/checkout' className="btn btn-primary">Checkout</Link>
                             </div>
                         </div>
                     </div>

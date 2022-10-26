@@ -1,14 +1,24 @@
 import React from 'react';
+import { useState } from 'react';
 import { useContext } from 'react';
 import { Link } from 'react-router-dom';
 import { AuthContext } from '../../Context/AuthProvider';
 
 const Header = () => {
+    const [checking, setChecking] = useState(true);
     const { logOut, user, setUser } = useContext(AuthContext);
 
     const userLogout = () => {
         logOut();
         setUser('')
+    }
+
+    const handleToggle = () => {
+        if (checking) {
+            setChecking(false);
+        } else {
+            setChecking(true);
+        }
     }
 
     return (
@@ -32,9 +42,15 @@ const Header = () => {
                         <Link to='/course-category'>
                             Course
                         </Link>
-
                     </li>
-                    <li><Link>Blog</Link></li>
+                    <li><Link to='/faq'>FAQ</Link></li>
+                    <li><Link to='/blog'>Blog</Link></li>
+                    <li><div className="form-control">
+                        <label className="label cursor-pointer">
+                            <input type="checkbox" className="toggle toggle-secondary"
+                                onClick={handleToggle} checked={checking} />
+                        </label>
+                    </div></li>
                 </ul>
             </div>
             <div className="navbar-end">
@@ -43,7 +59,9 @@ const Header = () => {
                     user?.uid ?
                         <>
                             <p>{user?.displayName}</p>
-                            <img className="w-16 rounded-full mx-2" src={user?.photoURL} alt="" />
+                            <div className="tooltip  tooltip-left" data-tip={user?.displayName}>
+                                <img className="w-16 rounded-full mx-2" src={user?.photoURL} alt="" />
+                            </div>
                             <Link to='/login' className="btn btn-outline btn-info mr-2" onClick={userLogout}>Logout</Link>
                         </>
                         :

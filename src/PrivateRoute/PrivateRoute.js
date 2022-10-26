@@ -9,9 +9,14 @@ const PrivateRoute = ({children}) => {
     if(loading){
         return <h2>Loading......</h2>
     }
-    if(!user.emailVerified) {
+    if(!user) {
+        alert('you are not logged in')
         return <Navigate to='/login' state={{from: location}} replace></Navigate>
-    } 
+    }
+    // if(!user.emailVerified) {
+    //     alert('you are not verified please verified your account')
+    //     return <Navigate to='/login' state={{from: location}} replace></Navigate>
+    // }
 
     return children;
 

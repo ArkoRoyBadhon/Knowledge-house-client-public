@@ -23,7 +23,7 @@ const Login = () => {
                 const user = result.user;
                 console.log('login success');
                 form.reset();
-                if (user.emailVerified) {
+                if (user) {
                     navigate(from, { replace: true })
                 } else {
                     alert('not verified');
@@ -40,7 +40,7 @@ const Login = () => {
             .then(result => {
                 const user = result.user;
                 verifyEmail();
-                navigate('/');
+                navigate(from, { replace: true })
             })
             .catch(error => console.error(error))
     }
@@ -51,7 +51,7 @@ const Login = () => {
             const user = result.user;
             setUser(user);
             // verifyEmail();
-            navigate('/');
+            navigate(from, { replace: true })
         })
         .catch(error => console.error(error))
     }
