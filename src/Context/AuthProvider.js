@@ -65,7 +65,7 @@ const AuthProvider = ({ children }) => {
             // if( currentuser.emailVerified) {
             //     setUser(currentuser);
             // }
-            console.log(currentuser);
+            // console.log(currentuser);
             if(currentuser?.emailVerified) {
                 setUser(currentuser);
             }

@@ -12,12 +12,12 @@ const CoursePage = () => {
 
 
     return (
-        <div className='mt-8'>
-            <div className='grid grid-cols-12 gap-4'>
+        <div className='mt-8 '>
+            <div className='w-11/12 mx-auto grid grid-cols-12 gap-4'>
                 <div className='col-span-4'>
                     <div className='mt-8 sticky top-32 ps-3'>
                         {
-                            category.map(catgory => <div key={catgory.id} className='container'><Link to={`/course-details/${catgory.id}`} className='btn w-80'>{catgory.name}</Link></div>)
+                            category.map(catgory => <div key={catgory.id} className='container my-2'><Link to={`/course-details/${catgory.id}`} className='btn w-80'>{catgory.name}</Link></div>)
                         }
                     </div>
                 </div>

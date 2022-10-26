@@ -21,7 +21,7 @@ const Login = () => {
         logIn(email, password)
             .then(result => {
                 const user = result.user;
-                console.log('login success');
+                // console.log('login success');
                 form.reset();
                 if (user) {
                     navigate(from, { replace: true })

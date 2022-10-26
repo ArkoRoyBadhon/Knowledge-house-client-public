@@ -9,7 +9,7 @@ const CourseDetail = () => {
 
     // console.log("detail page", detail);
     return (
-        <div ref={ref} className='mt-8 w-11/12 mx-auto'>
+        <div ref={ref} className='mt-8 w-8/12 mx-auto'>
             {
                 detail.map(course => <div key={course.id}>
                     <div className="text-center">
@@ -19,17 +19,17 @@ const CourseDetail = () => {
                             {({ toPdf }) => <button onClick={toPdf}>Generate Pdf</button>}
                         </Pdf> */}
                     </div>
-                    <div className="w-2/4 mx-auto my-5">
-                        <img className='w-full rounded' src={course.photoURL} alt="" />
+                    <div className="w-3/4 mx-auto my-5">
+                        <img className='w-full h-80 rounded' src={course.photoURL} alt="" />
                     </div>
                     <p><strong>Description:</strong> {course.description}</p>
                     <p className='font-bold'>Course Features</p>
                     {
-                        course.course_module.map(subpart => <p key={Math.random()} className="">{subpart.one}</p>)
+                        course.course_module.map(subpart => <p key={Math.random()} className="">- {subpart.one}</p>)
                     }
                     <p className="mt-5 font-bold">Why Our course?</p>
                     {
-                        course.support.map(subpart => <p key={Math.random()} className="">{subpart.one}</p>)
+                        course.support.map(subpart => <p key={Math.random()} className="">- {subpart.one}</p>)
                     }
                     <div className="card w-3/5 bg-base-100 shadow-xl mx-auto mt-8">
                         <div className="card-body">
@@ -42,7 +42,7 @@ const CourseDetail = () => {
                             </div>
                             <p className="">Total Student: {course.total_student}</p>
                             <div className="card-actions justify-center mt-4">
-                                <Link to='/checkout' className="btn btn-primary">Checkout</Link>
+                                <Link to={`/checkout/${course.id}`} className="btn btn-primary">Get premium access</Link>
                             </div>
                         </div>
                     </div>

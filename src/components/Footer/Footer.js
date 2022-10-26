@@ -13,14 +13,14 @@ const Footer = () => {
             .catch(error => console.error(error))
     }, [])
 
-    console.log(allData);
+    // console.log(allData);
     return (
         <>
             <footer className=" footer p-10 bg-base-200 text-base-content bottom-0 mt-12 flex justify-evenly">
                 <div>
                     <span className="footer-title">Services</span>
                     {
-                        allData?.map(item => <Link to={`/course-details/${item.id}`} className="link link-hover">{item.name}</Link>)
+                        allData?.map(item => <Link key={item.id} to={`/course-details/${item.id}`} className="link link-hover">{item.name}</Link>)
                     }
                 </div>
                 <div>

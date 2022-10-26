@@ -70,7 +70,7 @@ const Header = () => {
                 </ul>
             </div>
             <div className="navbar-end">
-                {console.log(user?.uid)}
+                {/* {console.log(user?.uid)} */}
                 {
                     user?.uid ?
                         <>
