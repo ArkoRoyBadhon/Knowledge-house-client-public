@@ -6,7 +6,7 @@ import { AuthContext } from '../../Context/AuthProvider';
 
 const Login = () => {
 
-    const { logIn, setLoading } = useContext(AuthContext);
+    const { logIn, setLoading, createUserWithGoogle, verifyEmail } = useContext(AuthContext);
 
     const navigate = useNavigate();
     const location = useLocation();
@@ -34,6 +34,18 @@ const Login = () => {
                 setLoading(false);
             })
     }
+
+    const handleGoogle = () => {
+        createUserWithGoogle()
+            .then(result => {
+                const user = result.user;
+                verifyEmail();
+                navigate('/');
+            })
+            .catch(error => console.error(error))
+    }
+
+
     return (
         <div className="w-2/5 mx-auto rounded-md shadow-xl mt-8 py-8 text-center">
             <h4 className='text-xl font-bold'>Login</h4>
@@ -56,14 +68,14 @@ const Login = () => {
             <div className=" w-4/6 px-3 pb-5 pt-3 mx-auto border mt-3 rounded-lg">
                 <h3 className='font-bold'>Login With </h3>
                 <div className="flex justify-evenly mt-3">
-                    <button className='flex'>
-                    <FaGoogle className='text-xl text-yellow-500 border-spacing-2'></FaGoogle>
-                    <p className='pl-1'>Google</p>
+                    <button onClick={handleGoogle} className='flex'>
+                        <FaGoogle className='text-xl text-yellow-500 border-spacing-2'></FaGoogle>
+                        <p className='pl-1'>Google</p>
                     </button>
 
                     <button className='flex'>
-                    <FaGithub className='text-xl'></FaGithub>
-                    <p className='pl-1'>GitHub</p>
+                        <FaGithub className='text-xl'></FaGithub>
+                        <p className='pl-1'>GitHub</p>
                     </button>
                 </div>
             </div>

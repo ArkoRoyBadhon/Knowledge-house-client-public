@@ -6,7 +6,7 @@ import { FaGoogle, FaGithub } from 'react-icons/fa';
 
 const Register = () => {
     const [checked, setChecked] = useState(false);
-    const {createUser, updateUserProfile, verifyEmail} = useContext(AuthContext);
+    const {createUser, updateUserProfile, verifyEmail, createUserWithGoogle} = useContext(AuthContext);
 
     const navigate = useNavigate();
 
@@ -48,6 +48,16 @@ const Register = () => {
         } else {
             setChecked(true)
         }
+    }
+
+    const handleGoogle = () => {
+        createUserWithGoogle()
+        .then(result => {
+            const user = result.user;
+            verifyEmail();
+            navigate('/');
+        })
+        .catch(error => console.error(error))
     }
 
 
@@ -92,7 +102,7 @@ const Register = () => {
             <div className=" w-4/6 px-3 pb-5 pt-3 mx-auto border mt-3 rounded-lg">
                 <h3 className='font-bold'>Register With </h3>
                 <div className="flex justify-evenly mt-3">
-                    <button className='flex'>
+                    <button onClick={handleGoogle} className='flex'>
                     <FaGoogle className='text-xl text-yellow-500 border-spacing-2'></FaGoogle>
                     <p className='pl-1'>Google</p>
                     </button>
