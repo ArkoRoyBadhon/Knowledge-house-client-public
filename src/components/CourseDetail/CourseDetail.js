@@ -1,5 +1,7 @@
-import React, { useRef } from 'react';
+import React from 'react';
 import { Link, useLoaderData } from 'react-router-dom';
+import Pdf from "react-to-pdf";
+import { FaSave } from 'react-icons/fa';
 
 
 const CourseDetail = () => {
@@ -11,9 +13,15 @@ const CourseDetail = () => {
         <div ref={ref} className='mt-8 w-8/12 mx-auto'>
             {
                 detail.map(course => <div key={course.id}>
-                    <div className="text-center">
-                        <h2 className='text-xl font-bold text-center text-red-600'>{course.name}</h2>
-                        
+                    <div className="text-center flex justify-between">
+                        <div className="flex justify-center">
+                            <h2 className='text-xl font-bold text-center text-red-600 inline'>{course.name}</h2>
+                        </div>
+                        <div className='flex justify-end border border-l-rose-800'>
+                            <Pdf targetRef={ref} filename="code-example.pdf">
+                                {({ toPdf }) => <button className='flex' onClick={toPdf}>Generate Pdf <FaSave className='text-2xl ml-2' /></button>}
+                            </Pdf>
+                        </div>
                     </div>
                     <div className="w-3/4 mx-auto my-5">
                         <img className='w-full h-80 rounded' src={course.photoURL} alt="" />
