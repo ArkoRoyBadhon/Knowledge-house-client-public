@@ -1,7 +1,8 @@
 import React from 'react';
 import { useContext,useState } from 'react';
 import { AuthContext } from '../../Context/AuthProvider';
-import {useNavigate} from 'react-router-dom';
+import {Link, useNavigate} from 'react-router-dom';
+import { FaGoogle, FaGithub } from 'react-icons/fa';
 
 const Register = () => {
     const [checked, setChecked] = useState(false);
@@ -52,7 +53,7 @@ const Register = () => {
 
 
     return (
-        <div className="w-2/5 mx-auto rounded-md shadow-xl mt-8 py-8 ">
+        <div className="w-2/5 mx-auto rounded-md shadow-xl mt-8 py-8 text-center">
             <h4 className='text-xl font-bold'>Registration Form</h4>
             <form className='mt-5' onSubmit={handleSubmit}>
                 <div className="form-control w-full max-w-xs mx-auto">
@@ -87,6 +88,21 @@ const Register = () => {
                 </div>
                 <input type="submit" className={`btn btn-outline btn-info w-2/5 mt-4 ${!checked && 'btn-disabled'}`} value='Register' />
             </form>
+            <small>Already have an account? <Link className='text-sky-600' to='/login'>Login</Link></small>
+            <div className=" w-4/6 px-3 pb-5 pt-3 mx-auto border mt-3 rounded-lg">
+                <h3 className='font-bold'>Register With </h3>
+                <div className="flex justify-evenly mt-3">
+                    <button className='flex'>
+                    <FaGoogle className='text-xl text-yellow-500 border-spacing-2'></FaGoogle>
+                    <p className='pl-1'>Google</p>
+                    </button>
+
+                    <button className='flex'>
+                    <FaGithub className='text-xl'></FaGithub>
+                    <p className='pl-1'>GitHub</p>
+                    </button>
+                </div>
+            </div>
         </div>
     );
 };

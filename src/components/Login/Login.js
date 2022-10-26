@@ -1,7 +1,7 @@
 import React from 'react';
-
+import { FaGoogle, FaGithub } from 'react-icons/fa';
 import { useContext } from 'react';
-import { useLocation, useNavigate } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../Context/AuthProvider';
 
 const Login = () => {
@@ -35,7 +35,7 @@ const Login = () => {
             })
     }
     return (
-        <div className="w-2/5 mx-auto rounded-md shadow-xl mt-8 py-8">
+        <div className="w-2/5 mx-auto rounded-md shadow-xl mt-8 py-8 text-center">
             <h4 className='text-xl font-bold'>Login</h4>
             <form className='' onSubmit={handleSubmit}>
                 <div className="form-control w-full max-w-xs mx-auto">
@@ -52,6 +52,21 @@ const Login = () => {
                 </div>
                 <input type="submit" value='Login' className='btn btn-outline btn-info w-2/5 mt-4 mb-8' />
             </form>
+            <small>Create account <Link className='text-sky-600' to='/register'>Register</Link></small>
+            <div className=" w-4/6 px-3 pb-5 pt-3 mx-auto border mt-3 rounded-lg">
+                <h3 className='font-bold'>Login With </h3>
+                <div className="flex justify-evenly mt-3">
+                    <button className='flex'>
+                    <FaGoogle className='text-xl text-yellow-500 border-spacing-2'></FaGoogle>
+                    <p className='pl-1'>Google</p>
+                    </button>
+
+                    <button className='flex'>
+                    <FaGithub className='text-xl'></FaGithub>
+                    <p className='pl-1'>GitHub</p>
+                    </button>
+                </div>
+            </div>
         </div>
     );
 };
