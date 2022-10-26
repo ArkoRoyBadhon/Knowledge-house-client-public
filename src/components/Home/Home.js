@@ -1,6 +1,7 @@
 import React from 'react';
 import image from '../../assets/study.webp'
 import image2 from '../../assets/img.webp'
+import { Link } from 'react-router-dom';
 
 const Home = () => {
     return (
@@ -28,13 +29,13 @@ const Home = () => {
             <div className="w-4/5 mx-auto my-4 text-center h-52 flex flex-col justify-center">
                 <h4 className="text-md font-bold mt-3 mb-3">Select the best from various online courses</h4>
                 <p>Our online video courses give you the freedom to learn remotely, <br /> and our experts will guide you properly.</p>
-                <button className="btn btn-outline btn-primary w-32 mx-auto mt-3">Join Today</button>
+                <Link to='/register' className="btn btn-outline btn-primary w-32 mx-auto mt-3">Join Today</Link>
             </div>
 
             <div className="flex mt-8 h-72 gap-5 justify-center my-auto">
                 <div className="w-3/5 my-auto">
-                    <div><h4 className='text-xl'>Get more close with your courses</h4>
-                        <p>We provide a wide range of courses for the different sectors you can choose from, <br /> which suits you perfectly</p>
+                    <div><h4 className='text-xl font-semibold'>Get more close with your courses</h4>
+                        <p className='font-thin'>We provide a wide range of courses for the different sectors you can choose from, <br /> which suits you perfectly</p>
                         <p>1. Very easy understandable language</p>
                         <p>2. Very effective and updated course outline</p>
                         <p>3. All tools and software are provided to student</p></div>
