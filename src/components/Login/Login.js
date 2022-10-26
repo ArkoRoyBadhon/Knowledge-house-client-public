@@ -3,9 +3,11 @@ import { FaGoogle, FaGithub } from 'react-icons/fa';
 import { useContext } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../Context/AuthProvider';
+import toast from 'react-hot-toast';
+import { useState } from 'react';
 
 const Login = () => {
-
+    const [theError, setTheError] = useState('');
     const { logIn, setLoading, setUser, createUserWithGoogle, verifyEmail, createUserWithGithub } = useContext(AuthContext);
 
     const navigate = useNavigate();
@@ -24,12 +26,16 @@ const Login = () => {
                 // console.log('login success');
                 form.reset();
                 if (user) {
+                    notify();
                     navigate(from, { replace: true })
                 } else {
                     alert('not verified');
                 }
             })
-            .catch(error => console.error(error))
+            .catch(error => {
+                setTheError(error);
+                notifyError();
+            })
             .finally(() => {
                 setLoading(false);
             })
@@ -56,22 +62,25 @@ const Login = () => {
         .catch(error => console.error(error))
     }
 
+    const notify = () => toast.success('Login successfully');
+    const notifyError = () => toast.error('Email or password not match');
+
 
     return (
-        <div className="w-2/5 mx-auto rounded-md shadow-xl mt-8 py-8 text-center">
+        <div className="w-5/6 lg:w-2/5 mx-auto rounded-md shadow-xl mt-8 py-8 text-center">
             <h4 className='text-xl font-bold'>Login</h4>
             <form className='' onSubmit={handleSubmit}>
                 <div className="form-control w-full max-w-xs mx-auto">
                     <label className="label">
                         <span className="label-text">Enter Your Email</span>
                     </label>
-                    <input name='email' type="email" placeholder="Type here" className="input input-bordered w-full max-w-xs" />
+                    <input name='email' type="email" placeholder="Type here" className="input input-bordered w-full max-w-xs" required />
                 </div>
                 <div className="form-control w-full max-w-xs mx-auto">
                     <label className="label">
                         <span className="label-text">Enter Your Password</span>
                     </label>
-                    <input name='password' type="password" placeholder="Type here" className="input input-bordered w-full max-w-xs" />
+                    <input name='password' type="password" placeholder="Type here" className="input input-bordered w-full max-w-xs" required />
                 </div>
                 <input type="submit" value='Login' className='btn btn-outline btn-info w-2/5 mt-4 mb-8' />
             </form>

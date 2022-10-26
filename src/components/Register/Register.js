@@ -3,6 +3,9 @@ import { useContext,useState } from 'react';
 import { AuthContext } from '../../Context/AuthProvider';
 import {Link, useNavigate} from 'react-router-dom';
 import { FaGoogle, FaGithub } from 'react-icons/fa';
+import toast from 'react-hot-toast';
+
+
 
 const Register = () => {
     const [checked, setChecked] = useState(false);
@@ -24,6 +27,7 @@ const Register = () => {
             // console.log(user);
             form.reset();
             handleUpdateUserProfile(name,photoURL);
+            notify();
             verifyEmail();
             navigate('/login');
         })
@@ -70,10 +74,11 @@ const Register = () => {
         .catch(error => console.error(error))
     }
 
+    const notify = () => toast.success('Registraion completed successfully');
 
 
     return (
-        <div className="w-2/5 mx-auto rounded-md shadow-xl mt-8 py-8 text-center">
+        <div className="w-5/6 lg:w-2/5 mx-auto rounded-md shadow-xl mt-8 py-8 text-center">
             <h4 className='text-xl font-bold'>Registration Form</h4>
             <form className='mt-5' onSubmit={handleSubmit}>
                 <div className="form-control w-full max-w-xs mx-auto">

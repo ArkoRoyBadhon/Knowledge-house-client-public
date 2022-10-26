@@ -5,7 +5,7 @@ const CoursePage = () => {
     const [category, setCategory] = useState([]);
 
     useEffect(() => {
-        fetch('http://localhost:5000/course-category')
+        fetch('https://json-server-dusky-six.vercel.app/course-category')
             .then(res => res.json())
             .then(data => setCategory(data));
     }, [])
@@ -13,18 +13,18 @@ const CoursePage = () => {
 
     return (
         <div className='mt-8 '>
-            <div className='w-11/12 mx-auto grid grid-cols-12 gap-4'>
-                <div className='col-span-4'>
-                    <div className='mt-8 sticky top-32 ps-3'>
+            <div className='w-11/12 mx-auto lg:grid lg:grid-cols-12 lg:gap-4'>
+                <div className='lg:col-span-4 mx-auto'>
+                    <div className='mt-8 sticky top-32 ps-3 ml-8 lg:ml-0'>
                         {
                             category.map(catgory => <div key={catgory.id} className='container my-2'><Link to={`/course-details/${catgory.id}`} className='btn w-80'>{catgory.name}</Link></div>)
                         }
                     </div>
                 </div>
-                <div className='col-span-8 grid grid-cols-2 gap-5'>
+                <div className='my-8 lg:my-0 lg:col-span-8 lg:grid grid-cols-2 gap-5'>
                     {
                         category.map(course =>
-                            <div key={course.id} className="card w-50 bg-base-100 shadow-xl">
+                            <div key={course.id} className="card w-50 bg-base-100 shadow-xl my-8 lg:my-0">
                                 <figure><img src={course.photoURL} alt="Shoes" /></figure>
                                 <div className="card-body">
                                     <h2 className="card-title">

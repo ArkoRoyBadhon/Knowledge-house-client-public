@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 import { AuthContext } from '../../Context/AuthProvider';
 
 const Header = () => {
-    const [checking, setChecking] = useState(true);
+    // const [checking, setChecking] = useState(true);
     const { logOut, user, setUser } = useContext(AuthContext);
 
     const userLogout = () => {
@@ -13,16 +13,16 @@ const Header = () => {
         setUser('')
     }
 
-    const handleToggle = () => {
-        if (checking) {
-            setChecking(false);
-        } else {
-            setChecking(true);
-        }
-    }
+    // const handleToggle = () => {
+    //     if (checking) {
+    //         setChecking(false);
+    //     } else {
+    //         setChecking(true);
+    //     }
+    // }
 
     return (
-        <div className="navbar bg-base-100 sticky top-0 z-50 bg-gray-200">
+        <div className="navbar sticky top-0 z-50 bg-gray-200">
             <div className="navbar-start">
                 <div className="dropdown">
                     <label tabIndex={0} className="btn btn-ghost lg:hidden">
@@ -47,7 +47,7 @@ const Header = () => {
                     </div></li>
                     </ul>
                 </div>
-                <Link className="btn btn-ghost normal-case text-xl">Knowledge<span className='text-red-600'>House</span></Link>
+                <Link className="btn btn-ghost normal-case lg:text-xl ">Knowledge<span className='text-red-600'>House</span></Link>
             </div>
             <div className="navbar-center hidden lg:flex">
                 <ul className="menu menu-horizontal p-0">
@@ -74,16 +74,16 @@ const Header = () => {
                 {
                     user?.uid ?
                         <>
-                            <p>{user?.displayName}</p>
+                            <p className='hidden'>{user?.displayName}</p>
                             <div className="tooltip  tooltip-left" data-tip={user?.displayName}>
-                                <img className="w-16 rounded-full mx-2" src={user?.photoURL} alt="" />
+                                <img className="w-12 lg:w-16 rounded-full mx-2" src={user?.photoURL} alt="" />
                             </div>
                             <Link to='/login' className="btn btn-outline btn-info mr-2" onClick={userLogout}>Logout</Link>
                         </>
                         :
                         <>
-                            <Link to='/login' className="btn btn-outline btn-info mr-2">Login</Link>
-                            <Link to='/register' className="btn btn-outline btn-secondary">Register</Link>
+                            <Link to='/login' className="btn btn-outline lg:btn-outline btn-sm btn-info mr-2 lg:btn">Login</Link>
+                            <Link to='/register' className="btn btn-outline lg:btn-outline lg:btn-secondary btn-sm lg:btn">Register</Link>
                         </>
                 }
 

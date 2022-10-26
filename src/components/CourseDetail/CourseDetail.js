@@ -1,7 +1,6 @@
 import React, { useRef } from 'react';
 import { Link, useLoaderData } from 'react-router-dom';
-// import { useReactToPrint } from 'react-to-print';
-// import Pdf from "react-to-pdf";
+
 
 const CourseDetail = () => {
     const detail = useLoaderData();
@@ -15,9 +14,6 @@ const CourseDetail = () => {
                     <div className="text-center">
                         <h2 className='text-xl font-bold text-center text-red-600'>{course.name}</h2>
                         
-                        {/* <Pdf targetRef={ref} filename="code-example.pdf">
-                            {({ toPdf }) => <button onClick={toPdf}>Generate Pdf</button>}
-                        </Pdf> */}
                     </div>
                     <div className="w-3/4 mx-auto my-5">
                         <img className='w-full h-80 rounded' src={course.photoURL} alt="" />
@@ -31,7 +27,7 @@ const CourseDetail = () => {
                     {
                         course.support.map(subpart => <p key={Math.random()} className="">- {subpart.one}</p>)
                     }
-                    <div className="card w-3/5 bg-base-100 shadow-xl mx-auto mt-8">
+                    <div className="card lg:w-3/5 bg-base-100 shadow-xl mx-auto mt-8">
                         <div className="card-body">
                             <h2 className="card-title">{course.name}</h2>
                             <small>Trainer: {course.creator}</small>

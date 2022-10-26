@@ -7,7 +7,7 @@ const Footer = () => {
     const [allData, setAllData] = useState();
 
     useEffect(() => {
-        fetch(`http://localhost:5000/course-category`)
+        fetch(`https://json-server-dusky-six.vercel.app/course-category`)
             .then(res => res.json())
             .then(data => setAllData(data))
             .catch(error => console.error(error))
@@ -16,27 +16,27 @@ const Footer = () => {
     // console.log(allData);
     return (
         <>
-            <footer className=" footer p-10 bg-base-200 text-base-content bottom-0 mt-12 flex justify-evenly">
-                <div>
-                    <span className="footer-title">Services</span>
+            <footer className=" footer p-10 bg-base-200 text-base-content bottom-0 mt-12 flex flex-col lg:flex-row lg:justify-evenly">
+                <div className='mx-auto'>
+                    <span className="footer-title mx-auto">Courses</span>
                     {
                         allData?.map(item => <Link key={item.id} to={`/course-details/${item.id}`} className="link link-hover">{item.name}</Link>)
                     }
                 </div>
-                <div>
+                <div className='mx-auto'>
                     <span className="footer-title">Links</span>
                     <Link to='/' className="link link-hover">Home</Link>
                     <Link to='/course-category' className="link link-hover">Course</Link>
                     <Link to='/faq' className="link link-hover">FAQ</Link>
                     <Link to='/blog' className="link link-hover">Blog</Link>
                 </div>
-                <div>
+                <div className='mx-auto'>
                     <span className="footer-title">Legal</span>
                     <Link className="link link-hover">Terms of use</Link>
                     <Link className="link link-hover">Privacy policy</Link>
                     <Link className="link link-hover">Cookie policy</Link>
                 </div>
-                <div>
+                <div className='mx-auto'>
                     <span className="footer-title">Newsletter</span>
                     <div className="form-control w-80">
                         <label className="label">

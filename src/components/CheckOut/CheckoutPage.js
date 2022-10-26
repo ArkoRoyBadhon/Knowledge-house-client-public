@@ -9,7 +9,7 @@ const CheckoutPage = () => {
 
     // console.log(courseDetail);
     return (
-        <div className='h-80 flex justify-center items-center'>
+        <div className='h-80 flex justify-center items-center px-8 lg:px-0'>
             {
                 courseDetail.map(course => <p className='text-3xl font-bold text-center' key={course.id}>{user.displayName} wants to get premium access of <span className='text-3xl font-extrabold'>{course.name}</span></p>)
             }

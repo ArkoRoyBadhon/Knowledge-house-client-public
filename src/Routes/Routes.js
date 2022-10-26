@@ -1,7 +1,6 @@
 import { createBrowserRouter } from "react-router-dom";
 import Blog from "../components/Blog/Blog";
 import CheckoutPage from "../components/CheckOut/CheckoutPage";
-import CourseCard from "../components/CourseCard/CourseCard";
 import CourseDetail from "../components/CourseDetail/CourseDetail";
 import CoursePage from "../components/CoursePage/CoursePage";
 import ErrorPage from "../components/ErrorPage/ErrorPage";
@@ -23,7 +22,7 @@ const routes = createBrowserRouter([
             {
                 path: '/course-category/',
                 element: <CoursePage></CoursePage>,
-                loader: () => fetch(`http://localhost:5000/course-category`),
+                loader: () => fetch(`https://json-server-dusky-six.vercel.app/course-category`),
             },
             {
                 path: '/login',
@@ -36,12 +35,12 @@ const routes = createBrowserRouter([
             {
                 path: '/course-details/:id',
                 element: <CourseDetail></CourseDetail>,
-                loader: ({params}) => fetch(`http://localhost:5000/course-detail/${params.id}`)
+                loader: ({params}) => fetch(`https://json-server-dusky-six.vercel.app/course-detail/${params.id}`)
             },
             {
                 path: '/checkout/:id',
                 element: <PrivateRoute><CheckoutPage></CheckoutPage></PrivateRoute>,
-                loader: ({params}) => fetch(`http://localhost:5000/course-detail/${params.id}`)
+                loader: ({params}) => fetch(`https://json-server-dusky-six.vercel.app/course-detail/${params.id}`)
             },
             {
                 path: '/blog',
