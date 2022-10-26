@@ -6,7 +6,7 @@ import { AuthContext } from '../../Context/AuthProvider';
 
 const Login = () => {
 
-    const { logIn, setLoading, createUserWithGoogle, verifyEmail } = useContext(AuthContext);
+    const { logIn, setLoading, setUser, createUserWithGoogle, verifyEmail, createUserWithGithub } = useContext(AuthContext);
 
     const navigate = useNavigate();
     const location = useLocation();
@@ -45,6 +45,17 @@ const Login = () => {
             .catch(error => console.error(error))
     }
 
+    const handleGithub = () => {
+        createUserWithGithub()
+        .then(result => {
+            const user = result.user;
+            setUser(user);
+            // verifyEmail();
+            navigate('/');
+        })
+        .catch(error => console.error(error))
+    }
+
 
     return (
         <div className="w-2/5 mx-auto rounded-md shadow-xl mt-8 py-8 text-center">
@@ -73,7 +84,7 @@ const Login = () => {
                         <p className='pl-1'>Google</p>
                     </button>
 
-                    <button className='flex'>
+                    <button onClick={handleGithub} className='flex'>
                         <FaGithub className='text-xl'></FaGithub>
                         <p className='pl-1'>GitHub</p>
                     </button>
