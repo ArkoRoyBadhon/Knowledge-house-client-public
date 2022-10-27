@@ -5,11 +5,11 @@ import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../Context/AuthProvider';
 import toast from 'react-hot-toast';
 import { useState } from 'react';
-import { useEffect } from 'react';
+// import { useEffect } from 'react';
 
 const Login = () => {
     const [theError, setTheError] = useState('');
-    const { logIn, setLoading, user,logOut, createUserWithGoogle, verifyEmail, createUserWithGithub } = useContext(AuthContext);
+    const { logIn, setLoading, createUserWithGoogle, createUserWithGithub } = useContext(AuthContext);
 
     const navigate = useNavigate();
     const location = useLocation();
@@ -18,25 +18,21 @@ const Login = () => {
 
     const handleSubmit = (event) => {
         event.preventDefault();
+        setTheError('');
         const form = event.target;
         const email = form.email.value;
         const password = form.password.value;
         logIn(email, password)
             .then(result => {
                 const user = result.user;
-                // if (!user.emailVerified) {
-                //     notifyVerify();
-                // } else {
-                    form.reset();
-                    if (user) {
-                        notify();
-                        navigate(from, { replace: true })
-                    }
-                // }
-
+                form.reset();
+                if (user) {
+                    notify();
+                    navigate(from, { replace: true })
+                }
             })
             .catch(error => {
-                setTheError(error);
+                setTheError(error.message);
                 notifyError();
             })
             .finally(() => {
@@ -45,13 +41,17 @@ const Login = () => {
     }
 
     const handleGoogle = () => {
+        setTheError('');
         createUserWithGoogle()
             .then(result => {
                 const user = result.user;
                 // verifyEmail();
                 navigate(from, { replace: true })
             })
-            .catch(error => console.error(error))
+            .catch(error => {
+                setTheError(error.message);
+                notifyError();
+            })
     }
 
     const handleGithub = () => {
@@ -66,12 +66,11 @@ const Login = () => {
     }
 
     const notify = () => toast.success('Login successfully');
-    const notifyError = () => toast.error('Email or password not match' + theError);
-    const notifyVerify = () => toast.error('Your email is not verified!! PLease verify');
+    const notifyError = () => toast.error(theError);
 
 
     return (
-        <div  className="w-5/6 lg:w-2/5 mx-auto rounded-md shadow-xl mt-8 py-8 text-center p-3">
+        <div className="w-5/6 lg:w-2/5 mx-auto rounded-md shadow-xl mt-8 py-8 text-center p-3">
             <h4 className='text-xl font-bold mb-5'>Login</h4>
             <form className='' onSubmit={handleSubmit}>
                 <div className="form-control w-full max-w-xs mx-auto">

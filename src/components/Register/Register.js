@@ -17,6 +17,7 @@ const Register = () => {
 
     const handleSubmit = (event) => {
         event.preventDefault();
+        setErrorFound('');
         const form = event.target;
         const name = form.name.value;
         const photoURL = form.photoURL.value;
@@ -25,12 +26,15 @@ const Register = () => {
         createUser(email, password)
             .then(result => {
                 const user = result.user;
-                console.log(user);
+                // console.log(user);
                 form.reset();
                 handleUpdateUserProfile(name, photoURL);
                 logOut()
-                .then(()=>{})
-                .catch(error=> console.error())
+                    .then(() => { })
+                    .catch(error => {
+                        setErrorFound(error.message)
+                        notifyError()
+                    })
                 setUser('')
                 notify();
                 // verifyEmail();
@@ -39,21 +43,26 @@ const Register = () => {
             .catch(error => {
                 console.error(error)
                 setErrorFound(error.message);
+                notifyError();
             })
-            .finally(() => logOut())
+
     }
 
-    console.log(errorFound);
+    // console.log(errorFound);
 
 
     const handleUpdateUserProfile = (name, photoURL) => {
+        setErrorFound('');
         const profile = {
             displayName: name,
             photoURL: photoURL
         }
         updateUserProfile(profile)
-            .then(() => {})
-            .catch(error => console.error(error))
+            .then(() => { })
+            .catch(error => {
+                setErrorFound(error.message)
+                notifyError()
+            })
     }
 
     const handleChecked = () => {
@@ -66,29 +75,34 @@ const Register = () => {
     }
 
     const handleGoogle = () => {
+        setErrorFound('');
         createUserWithGoogle()
             .then(result => {
                 const user = result.user;
-                verifyEmail();
-                navigate('/');
-            })
-            .catch(error => console.error(error))
-    }
-    const handleGithub = () => {
-        createUserWithGithub()
-            .then(result => {
-                const user = result.user;
-                verifyEmail();
+                // verifyEmail();
                 navigate('/');
             })
             .catch(error => {
-                console.error(error.message);
-                notifyGit();
+                setErrorFound(error.message)
+                notifyError()
+            })
+    }
+    const handleGithub = () => {
+        setErrorFound('');
+        createUserWithGithub()
+            .then(result => {
+                const user = result.user;
+                // verifyEmail();
+                navigate('/');
+            })
+            .catch(error => {
+                setErrorFound(error.message)
+                notifyError()
             })
     }
 
     const notify = () => toast.success('Registraion completed successfully');
-    const notifyGit = () => toast.success('Something wrong');
+    const notifyError = () => toast.error(errorFound);
 
 
     return (
