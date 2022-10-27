@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import { FaGoogle, FaGithub } from 'react-icons/fa';
 import { useContext } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
@@ -33,7 +33,7 @@ const Login = () => {
             })
             .catch(error => {
                 setTheError(error.message);
-                // notifyError();
+                notifyError();
             })
             .finally(() => {
                 setLoading(false);
@@ -50,7 +50,7 @@ const Login = () => {
             })
             .catch(error => {
                 setTheError(error.message);
-                // notifyError();
+                notifyError();
             })
     }
 
@@ -64,24 +64,20 @@ const Login = () => {
             })
             .catch(error => {
                 setTheError(error.message);
-                // notifyError();
+                notifyError();
             })
     }
 
     const notify = () => toast.success('Login successfully');
     // const notifyError = () => toast.error(theError);
     const notifyError = () => {
-        
-            toast.error(theError);
-        
+        if(theError === '') {
+            toast.error('Firebase: error (auth/wrong-password)')
+        } else {
+            toast.error(theError)
+        }
     }
 
-
-    useEffect(()=>{
-        if(theError !== ''){
-            notifyError()
-        }
-    },[theError])
 
     return (
         <div className="w-5/6 lg:w-2/5 mx-auto rounded-md shadow-xl mt-8 py-8 text-center p-3">

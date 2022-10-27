@@ -4,7 +4,7 @@ import { AuthContext } from '../../Context/AuthProvider';
 import { Link, useNavigate } from 'react-router-dom';
 import { FaGoogle, FaGithub } from 'react-icons/fa';
 import toast from 'react-hot-toast';
-import { useEffect } from 'react';
+// import { useEffect } from 'react';
 
 
 
@@ -44,7 +44,7 @@ const Register = () => {
             .catch(error => {
                 console.error(error)
                 setErrorFound(error.message);
-                // notifyError();
+                notifyError();
             })
 
     }
@@ -62,7 +62,7 @@ const Register = () => {
             .then(() => { })
             .catch(error => {
                 setErrorFound(error.message)
-                // notifyError()
+                notifyError()
             })
     }
 
@@ -103,14 +103,16 @@ const Register = () => {
     }
 
     const notify = () => toast.success('Registraion completed successfully');
-    const notifyError = () => toast.error(errorFound);
-
-
-    useEffect(()=>{
-        if(errorFound !== ''){
-            notifyError()
+    const notifyError = () => {
+        if( errorFound === '') {
+            toast.error('Firebase: error (auth/wrong-password)')
+        } else {
+            toast.error(errorFound)
         }
-    },[errorFound])
+    }
+
+
+    
 
     return (
         <div className="w-5/6 lg:w-2/5 mx-auto rounded-md shadow-xl mt-8 py-8 text-center p-3">
