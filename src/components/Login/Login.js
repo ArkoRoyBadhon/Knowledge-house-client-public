@@ -67,8 +67,8 @@ const Login = () => {
 
 
     return (
-        <div className="w-5/6 lg:w-2/5 mx-auto rounded-md shadow-xl mt-8 py-8 text-center">
-            <h4 className='text-xl font-bold'>Login</h4>
+        <div className="w-5/6 lg:w-2/5 mx-auto rounded-md shadow-xl mt-8 py-8 text-center p-3">
+            <h4 className='text-xl font-bold mb-5'>Login</h4>
             <form className='' onSubmit={handleSubmit}>
                 <div className="form-control w-full max-w-xs mx-auto">
                     <label className="label">
@@ -84,7 +84,7 @@ const Login = () => {
                 </div>
                 <input type="submit" value='Login' className='btn btn-outline btn-info w-2/5 mt-4 mb-8' />
             </form>
-            <small>Create account <Link className='text-sky-600' to='/register'>Register</Link></small>
+            <small>Don't have an account? <Link className='text-sky-600' to='/register'>Register</Link></small>
             <div className=" w-4/6 px-3 pb-5 pt-3 mx-auto border mt-3 rounded-lg">
                 <h3 className='font-bold'>Login With </h3>
                 <div className="flex justify-evenly mt-3">

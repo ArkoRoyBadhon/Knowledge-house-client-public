@@ -3,6 +3,7 @@ import { useState } from 'react';
 import { useContext } from 'react';
 import { Link } from 'react-router-dom';
 import { AuthContext } from '../../Context/AuthProvider';
+import logo from '../../assets/logo.jpg'
 
 const Header = () => {
     // const [checking, setChecking] = useState(true);
@@ -47,7 +48,7 @@ const Header = () => {
                     </div></li>
                     </ul>
                 </div>
-                <Link className="btn btn-ghost normal-case lg:text-xl ">Knowledge<span className='text-red-600'>House</span></Link>
+                <Link to='/' className="btn btn-ghost normal-case lg:text-xl "><img className='w-10 lg:w-20 rounded-md' src={logo} alt="" /> Knowledge<span className='text-red-600'>House</span></Link>
             </div>
             <div className="navbar-center hidden lg:flex">
                 <ul className="menu menu-horizontal p-0">
@@ -82,8 +83,8 @@ const Header = () => {
                         </>
                         :
                         <>
-                            <Link to='/login' className="btn btn-outline lg:btn-outline btn-sm btn-info mr-2 lg:btn">Login</Link>
-                            <Link to='/register' className="btn btn-outline lg:btn-outline lg:btn-secondary btn-sm lg:btn">Register</Link>
+                            <Link to='/login' className="btn btn-outline lg:btn-outline btn-xs btn-info mr-2 lg:btn">Login</Link>
+                            <Link to='/register' className="btn btn-outline lg:btn-outline lg:btn-secondary btn-xs lg:btn">Register</Link>
                         </>
                 }
 

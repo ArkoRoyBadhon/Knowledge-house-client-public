@@ -15,7 +15,7 @@ const CoursePage = () => {
         <div className='mt-8 '>
             <div className='w-11/12 mx-auto lg:grid lg:grid-cols-12 lg:gap-4'>
                 <div className='lg:col-span-4 mx-auto'>
-                    <div className='mt-8 sticky top-32 ps-3 ml-8 lg:ml-0'>
+                    <div className='mt-8 sticky top-32 ps-3 ml-7 lg:ml-0'>
                         {
                             category.map(catgory => <div key={catgory.id} className='container my-2'><Link to={`/course-details/${catgory.id}`} className='btn w-80'>{catgory.name}</Link></div>)
                         }

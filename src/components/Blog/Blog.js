@@ -5,7 +5,7 @@ const Blog = () => {
         <div className='mt-5 h-5/6'>
             <div className="collapse w-4/6 bg-slate-500 text-center mx-auto border rounded-lg">
                 <input type="checkbox" />
-                <div className="collapse-title text-xl font-medium bg-amber-500">
+                <div className="collapse-title text-xl font-medium bg-amber-200">
                     what is cors?
                 </div>
                 <div className="collapse-content text-left">
@@ -14,7 +14,7 @@ const Blog = () => {
             </div>
             <div className="collapse w-4/6 bg-slate-500 text-center mx-auto  border rounded-lg">
                 <input type="checkbox" />
-                <div className="collapse-title text-xl font-medium bg-amber-500">
+                <div className="collapse-title text-xl font-medium bg-amber-200">
                     Why are you using firebase? What other options do you have to implement authentication?
                 </div>
                 <div className="collapse-content text-left">
@@ -30,7 +30,7 @@ const Blog = () => {
             </div>
             <div className="collapse w-4/6 bg-slate-500 text-center mx-auto  border rounded-lg">
                 <input type="checkbox" />
-                <div className="collapse-title text-xl font-medium bg-amber-500">
+                <div className="collapse-title text-xl font-medium bg-amber-200">
                     How does the private route work?
                 </div>
                 <div className="collapse-content text-left">
@@ -39,7 +39,7 @@ const Blog = () => {
             </div>
             <div className="collapse w-4/6 bg-slate-500 text-center mx-auto  border rounded-lg">
                 <input type="checkbox" />
-                <div className="collapse-title text-xl font-medium bg-amber-500">
+                <div className="collapse-title text-xl font-medium bg-amber-200">
                     What is Node? How does Node work?
                 </div>
                 <div className="collapse-content text-left">

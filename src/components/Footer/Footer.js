@@ -18,23 +18,25 @@ const Footer = () => {
         <>
             <footer className=" footer p-10 bg-base-200 text-base-content bottom-0 mt-12 flex flex-col lg:flex-row lg:justify-evenly">
                 <div className='mx-auto'>
-                    <span className="footer-title mx-auto">Courses</span>
+                    <span className="footer-title mx-start">Courses</span>
                     {
                         allData?.map(item => <Link key={item.id} to={`/course-details/${item.id}`} className="link link-hover">{item.name}</Link>)
                     }
                 </div>
-                <div className='mx-auto'>
-                    <span className="footer-title">Links</span>
-                    <Link to='/' className="link link-hover">Home</Link>
-                    <Link to='/course-category' className="link link-hover">Course</Link>
-                    <Link to='/faq' className="link link-hover">FAQ</Link>
-                    <Link to='/blog' className="link link-hover">Blog</Link>
-                </div>
-                <div className='mx-auto'>
-                    <span className="footer-title">Legal</span>
-                    <Link className="link link-hover">Terms of use</Link>
-                    <Link className="link link-hover">Privacy policy</Link>
-                    <Link className="link link-hover">Cookie policy</Link>
+                <div className="flex justify-evenly w-full lg:w-80">
+                    <div className='mx-start flex flex-col'>
+                        <span className="footer-title mx-start">Links</span>
+                        <Link to='/' className="link link-hover">Home</Link>
+                        <Link to='/course-category' className="link link-hover">Course</Link>
+                        <Link to='/faq' className="link link-hover">FAQ</Link>
+                        <Link to='/blog' className="link link-hover">Blog</Link>
+                    </div>
+                    <div className='mx-start flex flex-col'>
+                        <span className="footer-title">Legal</span>
+                        <Link className="link link-hover">Terms of use</Link>
+                        <Link className="link link-hover">Privacy policy</Link>
+                        <Link className="link link-hover">Cookie policy</Link>
+                    </div>
                 </div>
                 <div className='mx-auto'>
                     <span className="footer-title">Newsletter</span>

@@ -8,7 +8,6 @@ const CourseDetail = () => {
     const detail = useLoaderData();
     const ref = React.createRef();
 
-    // console.log("detail page", detail);
     return (
         <div ref={ref} className='mt-8 w-8/12 mx-auto'>
             {

@@ -9,7 +9,7 @@ const PrivateRoute = ({children}) => {
     const {user, loading} = useContext(AuthContext);
     const location = useLocation();
 
-    const notify = () => toast.error('You are not login. Please Login first!!')
+    const notify = () => toast.error('You are not login. Please Login first!!');
 
     if(loading){
         return <h2>Loading......</h2>

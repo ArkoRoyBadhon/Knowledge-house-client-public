@@ -78,32 +78,32 @@ const Register = () => {
 
 
     return (
-        <div className="w-5/6 lg:w-2/5 mx-auto rounded-md shadow-xl mt-8 py-8 text-center">
+        <div className="w-5/6 lg:w-2/5 mx-auto rounded-md shadow-xl mt-8 py-8 text-center p-3">
             <h4 className='text-xl font-bold'>Registration Form</h4>
             <form className='mt-5' onSubmit={handleSubmit}>
                 <div className="form-control w-full max-w-xs mx-auto">
                     <label className="label">
-                        <span className="label-text">Enter Your Name</span>
+                        <span className="label-text">Full Name</span>
                     </label>
-                    <input name='name' type="text" placeholder="Type here" className="input input-bordered w-full max-w-xs input-primary" />
+                    <input name='name' type="text" placeholder="Type here your full name" className="input input-bordered w-full max-w-xs input-primary" required />
                 </div>
                 <div className="form-control w-full max-w-xs mx-auto">
                     <label className="label">
-                        <span className="label-text">Enter Your Photo Url</span>
+                        <span className="label-text">Photo Url</span>
                     </label>
-                    <input name='photoURL' type="text" placeholder="Type here" className="input input-bordered w-full max-w-xs input-primary" />
+                    <input name='photoURL' type="text" placeholder="Put your photo url" className="input input-bordered w-full max-w-xs input-primary" required />
                 </div>
                 <div className="form-control w-full max-w-xs mx-auto">
                     <label className="label">
-                        <span className="label-text">Enter Your Email</span>
+                        <span className="label-text">Email</span>
                     </label>
-                    <input name='email' type="text" placeholder="Type here" className="input input-bordered w-full max-w-xs input-primary" />
+                    <input name='email' type="text" placeholder="Type here your email address" className="input input-bordered w-full max-w-xs input-primary" required />
                 </div>
                 <div className="form-control w-full max-w-xs mx-auto">
                     <label className="label">
-                        <span className="label-text">Enter Your Password</span>
+                        <span className="label-text">Password</span>
                     </label>
-                    <input name='password' type="password" placeholder="Type here" className="input input-bordered w-full max-w-xs input-primary" />
+                    <input name='password' type="password" placeholder="Type here your password" className="input input-bordered w-full max-w-xs input-primary" required />
                 </div>
                 <div className="form-control max-w-xs w-full mx-auto">
                     <label className="cursor-pointer label">
