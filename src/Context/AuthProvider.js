@@ -42,7 +42,7 @@ const AuthProvider = ({ children }) => {
         return updateProfile(auth.currentUser, profile);
     }
     const verifyEmail = () => {
-        return sendEmailVerification(auth.currentUser)
+        return sendEmailVerification(auth.currentUser);
     }
 
 
@@ -60,13 +60,15 @@ const AuthProvider = ({ children }) => {
         createUserWithGithub,
     };
 
+    console.log(user);
+
     useEffect(()=> {
         const unsubscribe =  onAuthStateChanged(auth, (currentuser) => {
             // if( currentuser.emailVerified) {
             //     setUser(currentuser);
             // }
             // console.log(currentuser);
-            if(currentuser?.emailVerified) {
+            if(currentuser) {
                 setUser(currentuser);
             }
             setLoading(false);

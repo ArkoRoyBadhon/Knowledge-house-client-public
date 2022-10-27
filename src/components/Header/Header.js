@@ -71,7 +71,7 @@ const Header = () => {
                 </ul>
             </div>
             <div className="navbar-end">
-                {/* {console.log(user?.uid)} */}
+                {/* {console.log(user.photoURL)} */}
                 {
                     user?.uid ?
                         <>
@@ -79,7 +79,7 @@ const Header = () => {
                             <div className="tooltip  tooltip-left" data-tip={user?.displayName}>
                                 <img className="w-12 lg:w-16 rounded-full mx-2" src={user?.photoURL} alt="" />
                             </div>
-                            <Link to='/login' className="btn btn-outline btn-info mr-2" onClick={userLogout}>Logout</Link>
+                            <Link to='/login' className="btn btn-outline lg:btn-outline btn-xs btn-info mr-2" onClick={userLogout}>Logout</Link>
                         </>
                         :
                         <>

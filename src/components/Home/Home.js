@@ -31,7 +31,6 @@ const Home = () => {
                 <p>Our online video courses give you the freedom to learn remotely, <br /> and our experts will guide you properly.</p>
                 <Link to='/register' className="btn btn-outline btn-primary w-32 mx-auto mt-3">Join Today</Link>
             </div>
-
             <div className="lg:w-4/5 md:flex mt-8 h-max lg:h-80 gap-5 justify-center my-auto lg:mx-auto">
                 <div className="w-3/5 my-auto mx-auto mb-8 lg:pb-20 lg:mb-0">
                     <div className='my-auto'>
@@ -43,7 +42,7 @@ const Home = () => {
                     </div>
                 </div>
                 <div className="my-auto">
-                    <img className='w-46 lg:w-56 ' src={image2} alt="" />
+                    <img className='w-48 lg:w-56 mx-auto' src={image2} alt="" />
                 </div>
             </div>
         </div>

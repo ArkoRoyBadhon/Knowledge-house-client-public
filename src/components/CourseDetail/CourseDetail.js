@@ -22,7 +22,7 @@ const CourseDetail = () => {
                             </Pdf>
                         </div>
                     </div>
-                    <div className="w-3/4 mx-auto my-5">
+                    <div className="lg:w-3/4 mx-auto my-5">
                         <img className='w-full h-80 rounded' src={course.photoURL} alt="" />
                     </div>
                     <p><strong>Description:</strong> {course.description}</p>
