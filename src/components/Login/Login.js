@@ -18,7 +18,7 @@ const Login = () => {
 
     const handleSubmit = (event) => {
         event.preventDefault();
-        setTheError('');
+        // setTheError('');
         const form = event.target;
         const email = form.email.value;
         const password = form.password.value;
@@ -62,11 +62,21 @@ const Login = () => {
                 // verifyEmail();
                 navigate(from, { replace: true })
             })
-            .catch(error => console.error(error))
+            .catch(error => {
+                setTheError(error.message);
+                notifyError();
+            })
     }
 
     const notify = () => toast.success('Login successfully');
-    const notifyError = () => toast.error(theError);
+    // const notifyError = () => toast.error(theError);
+    const notifyError = () => {
+        if(theError === '') {
+            toast.error('Firebase: error (auth/user-not-found)')
+        } else {
+            toast.error(theError);
+        }
+    }
 
 
     return (
