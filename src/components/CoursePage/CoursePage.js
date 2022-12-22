@@ -3,12 +3,20 @@ import { Link} from 'react-router-dom';
 
 const CoursePage = () => {
     const [category, setCategory] = useState([]);
+    const [isLoading, setIsLoading] = useState(true);
 
     useEffect(() => {
         fetch('https://json-server-dusky-six.vercel.app/course-category')
             .then(res => res.json())
-            .then(data => setCategory(data));
+            .then(data => {
+                setCategory(data)
+                setIsLoading(false)
+            });
     }, [])
+
+    if(isLoading) {
+        return <h2 className='text-center mt-10'>Loading....</h2>
+    }
 
 
     return (
